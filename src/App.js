@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom"
 
-function App() {
+import Movies from "./pages/Movies"
+import Pricing from "./pages/Pricing"
+import TvShows from "./pages/TvShows"
+import Trends from "./pages/Trends"
+
+import Layout from "./components/Layout"
+
+import { useState, createContext } from "react"
+
+export const AppContext = createContext()
+
+const App = () => {
+  const [inputValue, setInputValue] = useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <AppContext.Provider value={{inputValue, setInputValue}}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Movies />}/>
+            <Route path="tvshows" element={<TvShows />}/>
+            <Route path="trending" element={<Trends />}/>
+            <Route path="pricing" element={<Pricing />}/>
+          </Route>
+        </Routes>
+      </AppContext.Provider>
+    </>
+  )
 }
 
-export default App;
+export default App
