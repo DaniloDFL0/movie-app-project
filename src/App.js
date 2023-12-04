@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 
 import Movies from "./pages/Movies"
-import Pricing from "./pages/Pricing"
+import Genres from "./pages/Genres"
 import TvShows from "./pages/TvShows"
 import Trends from "./pages/Trends"
 
@@ -22,7 +22,7 @@ const App = () => {
             <Route index element={<Movies />}/>
             <Route path="tvshows" element={<TvShows />}/>
             <Route path="trending" element={<Trends />}/>
-            <Route path="pricing" element={<Pricing />}/>
+            <Route path="genres" element={<Genres />}/>
           </Route>
         </Routes>
       </AppContext.Provider>

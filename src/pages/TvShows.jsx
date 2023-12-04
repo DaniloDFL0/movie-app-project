@@ -1,7 +1,5 @@
 import { getTvShows } from "../api"
 
-import { AiFillPlayCircle } from "react-icons/ai"
-
 import { useEffect, useState, useContext } from "react"
 
 import { AppContext } from "../App"
@@ -26,7 +24,6 @@ const TvShows = () => {
         <div key={tvShowData.id} className="w-[300px]">
           <div className="relative">
             <img className="rounded-xl w-full h-[500px]" src={tvShowData.poster_path && `https://image.tmdb.org/t/p/w500${tvShowData.poster_path}`} alt={`No image found for ${tvShowData.name}`}/>
-            <AiFillPlayCircle size={45} className="absolute bottom-7 left-5 text-white rounded-full"/>
           </div>
           <h2 className="text-xl font-roboto break-words mt-3 font-medium text-center text-white">{tvShowData.name}</h2>
         </div>

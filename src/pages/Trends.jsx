@@ -5,8 +5,6 @@ import { useState, useEffect } from "react"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 
-import { AiFillPlayCircle } from "react-icons/ai"
-
 const Trends = () => {
     const [weekMovies, setWeekMovies] = useState([])
     const [dayMovies, setDayMovies] = useState([])
@@ -96,7 +94,6 @@ const Trends = () => {
             {weekMovies.map((weekMovie) => (
               <div key={weekMovie.id} className="w-[200px] relative">
                 <img className="h-[300px]" src={weekMovie.poster_path && `https://image.tmdb.org/t/p/w200${weekMovie.poster_path}`}/>
-                <AiFillPlayCircle size={45} className="absolute bottom-7 left-5 text-white rounded-full"/>
               </div>
             ))}
           </Carousel>
@@ -107,7 +104,6 @@ const Trends = () => {
               {dayMovies.map((dayMovie) => (
                 <div key={dayMovie.id} className="w-[200px] relative">
                   <img className="h-[300px]" src={dayMovie.poster_path && `https://image.tmdb.org/t/p/w200${dayMovie.poster_path}`}/>
-                  <AiFillPlayCircle size={45} className="absolute bottom-7 left-5 text-white rounded-full"/>
                 </div>
               ))}
           </Carousel>
@@ -119,7 +115,6 @@ const Trends = () => {
               {weekTvShows.map((weekTvShow) => (
                 <div key={weekTvShow.id} className="w-[200px] relative">
                   <img className="h-[300px]" src={weekTvShow.poster_path && `https://image.tmdb.org/t/p/w200${weekTvShow.poster_path}`}/>
-                  <AiFillPlayCircle size={45} className="absolute bottom-7 left-5 text-white rounded-full"/>
                 </div>
               ))}
           </Carousel> 
@@ -130,7 +125,6 @@ const Trends = () => {
               {dayTvShows.map((dayTvShow) => (
                 <div key={dayTvShow.id} className="w-[200px] relative">
                   <img className="h-[300px]" src={dayTvShow.poster_path && `https://image.tmdb.org/t/p/w200${dayTvShow.poster_path}`}/>
-                  <AiFillPlayCircle size={45} className="absolute bottom-7 left-5 text-white rounded-full"/>
                 </div>
               ))}
           </Carousel> 
