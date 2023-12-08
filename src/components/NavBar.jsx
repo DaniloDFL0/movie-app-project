@@ -17,10 +17,15 @@ const NavBar = () => {
             return "Search for Movies..."
         case "/tvshows":
             return "Search for TV Shows..."
+        case "/trending":
+            return "Search for Movies or TV Shows"
         default:
             return "Search..."
     }
   }
+
+  const disabledPaths = ["/genres", "/trending", "/movie"]
+  const isInputDisabled = disabledPaths.some((path) => location.pathname.startsWith(path))
 
   return (
     <header className="bg-gray-900 w-full flex justify-between items-center py-6 px-4 fixed z-10">
@@ -33,16 +38,18 @@ const NavBar = () => {
                 <li className="text-lg tracking-wide font-normal uppercase"><NavLink to="genres" className={({isActive}) => isActive ? "text-white border-b-2 py-1" : "text-amber-500"}>Genres</NavLink></li>
             </ul>
         </nav>
-        <div className="bg-white w-[360px] rounded-full pr-2 flex items-center">
-            <input 
-                type="text"
-                className="font-roboto rounded-full w-full py-2 px-4 cursor-pointer text-black focus:outline-none"
-                placeholder={getPlaceholderName()}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-            />
-            <HiOutlineSearch size={30}/>
-        </div>
+        {isInputDisabled ? null : (
+            <div className="bg-white w-[360px] rounded-full pr-2 flex items-center">
+                <input 
+                    type="text"
+                    className="font-roboto rounded-full w-full py-2 px-4 cursor-pointer text-black focus:outline-none"
+                    placeholder={getPlaceholderName()}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <HiOutlineSearch size={30}/>
+            </div>
+        )}
     </header>
   )
 }
