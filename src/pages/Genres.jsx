@@ -1,10 +1,12 @@
 import { getMovieGenres, getMoviesByGenre } from "../api"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, createContext } from "react"
 
 import { Outlet, Link } from "react-router-dom"
 
 import Button from "../components/Button"
+
+export const GenreContext = createContext()
 
 const Genres = () => {
   const [movieGenres, setMovieGenres] = useState([])
@@ -41,20 +43,22 @@ const Genres = () => {
   }
 
   return (
-    <div className="pt-32">
-      <div className="max-w-6xl px-8 mx-auto max-md:px-12 flex flex-wrap gap-3">
-        {movieGenres.map((movieGenre) => {
-          return (
-            <Link to={`${movieGenre.name}`}>
-              <Button key={movieGenre.id} genreName={movieGenre.name} handleClick={() => handleClick(movieGenre.id)}/>
-            </Link>
-          )
-        })}
+    <GenreContext.Provider value={{ moviesByGenre }}>
+      <div className="pt-32">
+        <div className="max-w-6xl px-8 mx-auto max-md:px-12 flex flex-wrap gap-3">
+          {movieGenres.map((movieGenre) => {
+            return (
+              <Link to={`${movieGenre.name}`} key={movieGenre.id}>
+                <Button key={movieGenre.id} genreName={movieGenre.name} handleClick={() => handleClick(movieGenre.id)}/>
+              </Link>
+            )
+          })}
+        </div>
+        <div>
+          <Outlet />
+        </div>
       </div>
-      <div>
-        <Outlet context={{ moviesByGenre }}/>
-      </div>
-    </div>
+    </GenreContext.Provider>
   )
 }
 

@@ -26,7 +26,7 @@ const Movies = () => {
         <Link to={`movie/${movieData.id}`} key={movieData.id}>
           <div key={movieData.id} className="w-[300px]">
             <div className="relative">
-              <img className="rounded-xl w-full h-[500px]" src={movieData.poster_path && `https://image.tmdb.org/t/p/w500${movieData.poster_path}`} alt={`No image found for ${movieData.title}`}/>
+              <img className="rounded-xl w-full h-[500px]" src={movieData.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : `https://via.placeholder.com/200x300`} alt={`No image found for ${movieData.title}`}/>
             </div>
             <h2 className="text-xl font-roboto break-words mt-3 font-medium text-center text-white">{movieData.title}</h2>
           </div>

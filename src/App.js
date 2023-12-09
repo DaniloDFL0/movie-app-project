@@ -8,6 +8,7 @@ import GenreMovies from "./pages/GenreMovies"
 import MovieDetails from "./pages/MovieDetails"
 import Cast from "./pages/Cast"
 import TvShowDetails from "./pages/TvShowDetails"
+import TvShowSeasons from "./pages/TvShowSeasons"
 
 import Layout from "./components/Layout"
 import TvShowLayout from "./components/TvShowLayout"
@@ -30,7 +31,9 @@ const App = () => {
             </Route>
             <Route path="tvshows" element={<TvShowLayout />}>
               <Route index element={<TvShows />}/>
-              <Route path=":id" element={<TvShowDetails />}/>
+              <Route path=":id" element={<TvShowDetails />}>
+                <Route index element={<TvShowSeasons />}/>
+              </Route>
             </Route>
             <Route path="trending" element={<Trends />}/>
             <Route path="genres" element={<Genres />}>

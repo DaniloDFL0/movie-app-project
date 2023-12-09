@@ -26,7 +26,7 @@ const TvShows = () => {
         <Link to={`${tvShowData.id}`} key={tvShowData.id}>
           <div key={tvShowData.id} className="w-[300px]">
             <div className="relative">
-              <img className="rounded-xl w-full h-[500px]" src={tvShowData.poster_path && `https://image.tmdb.org/t/p/w500${tvShowData.poster_path}`} alt={`No image found for ${tvShowData.name}`}/>
+              <img className="rounded-xl w-full h-[500px]" src={tvShowData.poster_path ? `https://image.tmdb.org/t/p/w500${tvShowData.poster_path}` : `https://via.placeholder.com/200x300`} alt={`No image found for ${tvShowData.name}`}/>
             </div>
             <h2 className="text-xl font-roboto break-words mt-3 font-medium text-center text-white">{tvShowData.name}</h2>
           </div>
